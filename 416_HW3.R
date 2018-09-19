@@ -148,3 +148,15 @@ for(i in 1:t){
 }
 Mt
 
+#Additional Problem 2 
+P = matrix(c(0,1,0,0,
+             1/9, 4/9, 4/9, 0,
+             0, 4/9, 4/9, 1/9,
+             0, 0, 1, 0), nrow = 4, ncol = 4, byrow = T)
+n = 4
+t = 20
+Mt = diag(n)
+for(r in 1:t){
+  Mt = Mt + P%^%r
+}
+Mt[4,1] + Mt[4,4]
