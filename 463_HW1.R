@@ -1,4 +1,36 @@
 ## Stat 463 HW1 - Addison Hayes
+#6 AR(1)
+library(simts)
+n = 1000
+phi = -.85
+sig_sq = 1
+
+Xt = gen_gts(n, AR1(phi = phi, sigma2 = sig_sq))
+plot(Xt)
+
+# MA(1)
+
+n = 1000                       
+sig_sq = 2                          
+theta = 0.9                          
+Xt = gen_gts(n, MA1(theta = theta, sigma2 = sig_sq))
+plot(Xt)
+
+# Drift Combined
+
+n = 1000                              
+omega = 0.1                         
+sig_sq = 1                          
+                        
+model = WN(sigma2 = sig_sq) + DR(omega = omega)
+Xt = gen_lts(n = n, model = model)
+plot(Xt)
+
+# RW
+n = 1000                               
+gamma2 = 1                             
+Xt = gen_gts(n, RW(gamma2 = gamma2))
+plot(Xt)
 
 # Problem 9
 install.packages("quantmod")
