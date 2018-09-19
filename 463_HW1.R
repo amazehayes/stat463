@@ -92,6 +92,7 @@ sigma2 = 1.5
 model = AR1(phi = phi, sigma2 = sigma2)
 
 # Simulate time series
+set.seed(123)
 Xt = mu + gen_gts(N, model)
 
 head(Xt)
@@ -105,13 +106,16 @@ delthat = matrix(NA,B)
 set.seed(234)
 for (i in seq_len(B)){
   
-  Xt = mu + gen_gts(N, model)
-  result[i,] = var(Xt)
+  Yt = mu + gen_gts(N, model)
+  result[i,] = var(Yt)
   delthat[i,] = result[i,]/mu
 }
 
 alpha = .05
 quantile(delthat, c(alpha/2, 1 - alpha/2))
+
+delt = var(Xt)/mu
+delt
 
 
 
